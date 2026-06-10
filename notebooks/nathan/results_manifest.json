@@ -1,0 +1,50 @@
+[
+  {
+    "dest": "dataset_manifest_train.jsonl",
+    "source": "/scratch/merged_data_80_20/train/manifest.jsonl",
+    "description": "Train split manifest (clip_id, text, metadata).",
+    "size_bytes": 383766
+  },
+  {
+    "dest": "dataset_manifest_test.jsonl",
+    "source": "/scratch/merged_data_80_20/test/manifest.jsonl",
+    "description": "Test split manifest (clip_id, text, metadata).",
+    "size_bytes": 90844
+  },
+  {
+    "dest": "audio_durations.json",
+    "source": "/scratch/merged_data_processed/audio/*.wav",
+    "description": "Precomputed per-clip audio duration (seconds), keyed by clip_id. Raw audio (1.5GB) not shipped.",
+    "size_bytes": 25679
+  },
+  {
+    "dest": "raw_source_token_distribution.json",
+    "source": "/scratch/merged_data_raw/transcripts/*.cha",
+    "description": "Precomputed aggregate CHAT source-token counts + coverage. Raw transcripts are private and NOT shipped.",
+    "size_bytes": 1488
+  },
+  {
+    "dest": "zero_shot_metrics_new2.json",
+    "source": "notebooks/yasaman/zero_shot_metrics_new2.json",
+    "description": "Team prompted zero-shot Qwen2-Audio baseline metrics.",
+    "size_bytes": 2435
+  },
+  {
+    "dest": "few_shot_metrics_new2.json",
+    "source": "notebooks/yasaman/few_shot_metrics_new2.json",
+    "description": "Team prompted few-shot Qwen2-Audio baseline metrics.",
+    "size_bytes": 2541
+  },
+  {
+    "dest": "precomputed_results.json",
+    "source": "/scratch/nathan/lora_run/outputs/**/*_test_predictions.jsonl + trainer_state.json",
+    "description": "All \u00a73 tables (headline, epoch sweep, per-token, CTC, ADReSS slice, bootstrap CIs, curriculum) precomputed with audiollm_d.metrics. Model checkpoints/predictions (418GB) not shipped.",
+    "size_bytes": 29532
+  },
+  {
+    "dest": "predictions_v2_best_test.jsonl",
+    "source": "/scratch/nathan/lora_run/outputs/qwen2-audio-dementia-lora-v2-16ep/epoch_014_test_predictions.jsonl",
+    "description": "Best-model (v2, 16ep) test predictions (clip_id/reference/prediction only) for the qualitative examples.",
+    "size_bytes": 84650
+  }
+]
