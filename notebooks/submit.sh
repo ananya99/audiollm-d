@@ -2,14 +2,14 @@
 # CS-552 — submit an interactive RCP job with Jupyter Lab.
 #
 # This is a starter Run:AI launcher and is intended to be the basis for
-# the project-wide notebooks/submit.sh deliverable in most cases. Make sure
+# the project-wide notebooks/submit.sh deliverable in most cases. Make sure 
 # GROUP is set to your team group, and modify anything else only if your
 # project genuinely needs it.
 #
 # GASPAR selects the Run:AI project of the person launching the job. Set
 # it to your own EPFL username when testing. For the submitted
 # notebooks/submit.sh, it is fine if GASPAR remains "gaspar": TAs will
-# replace it with their own username before grading.
+# replace it with their own username before grading. 
 
 # GROUP selects your team's scratch PVC and MUST be set correctly before
 # submission.
@@ -74,7 +74,7 @@ JOB_NAME="cs552-${GASPAR}-${GROUP}-${SUFFIX}-$(date +%H%M%S)"
 PROJECT="course-cs-552-${GASPAR}"
 
 # Default image with CUDA, PyTorch, and common libraries.
-# Override if you use a custom image.
+# Override if you use a custom image. 
 IMAGE="registry.rcp.epfl.ch/course-cs-552/base-vllm:v1"
 
 SCRATCH_PVC="course-cs-552-scratch-${GROUP}"
@@ -101,21 +101,14 @@ runai submit \
   --existing-pvc "claimname=${SCRATCH_PVC},path=/scratch" \
   --existing-pvc "claimname=${SHARED_RO_PVC},path=/shared-ro" \
   --existing-pvc "claimname=${SHARED_RW_PVC},path=/shared-rw" \
-  --command -- /bin/bash -lc "
+  --command -- /bin/bash -lc "\
     mkdir -p /scratch/hf_cache /scratch/wandb && \
+    ln -sf \"\$(command -v python3)\" /usr/local/bin/python && \
     cd /scratch && \
-    export PATH=/scratch/shared_env/bin:\$PATH
-    which python
-    python --version
-    which jupyter
-    exec python -m jupyter lab \
-      --ip=0.0.0.0 \
-      --port=8888 \
-      --no-browser \
-      --allow-root \
+    jupyter lab \
+      --ip=0.0.0.0 --port=8888 --no-browser --allow-root \
       --ServerApp.root_dir=/scratch \
-      --ServerApp.token=\${JUPYTER_TOKEN:-cs552}
-  "
+      --ServerApp.token=\${JUPYTER_TOKEN:-cs552}"
 
 cat <<EOF
 
@@ -159,4 +152,15 @@ Storage inside the pod:
   /shared-ro/datasets  course datasets (read-only)
   /shared-ro/models    course models   (read-only)
   /shared-rw           shared with ALL students — be careful what you write
+
+Deliverable notebooks:
+  Keep notebooks/<first_name>_<last_name>_<sciper>.ipynb files in your
+  git repo and commit them.
+  Keep the project-wide notebooks/submit.sh in the same notebooks/
+  directory. This script is intended to be the basis for that deliverable
+  in most cases. GROUP must be set to your team group in the submitted
+  file. GASPAR may be changed by whoever launches the job; TAs can
+  replace it before grading.
+  Use /scratch for caches, checkpoints, and large generated files, not
+  as a submission location.
 EOF
