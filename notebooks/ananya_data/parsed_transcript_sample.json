@@ -1,0 +1,101 @@
+{
+  "source_id": "BBW8512a",
+  "task": "Cinderella",
+  "corpus": "Hopkins",
+  "description": "Pre-parsed participant transcript from CHAT pipeline (bundled for notebook demo)",
+  "metadata": {
+    "language": "eng",
+    "corpus": "Hopkins",
+    "speaker": "PAR",
+    "age": "68;00.",
+    "sex": "male",
+    "diagnosis": "nfaPPA",
+    "role": "Participant"
+  },
+  "participant_transcript": "[uh] this is Cinderella. those are her two stepsisters and the wicked stepmother. [non-verbal] and [um] [medium-pause] she:'s washing the floor. [uh] because [uh] [short-pause] the wicked stepsisters and stepmother [um] [short-pause] tell her what to do. and [um] [long-pause] let's see [long-pause] [uh] [uh] [short-pause] she's visited by [um] someone or other who tells her that she will [um] [short-pause] go to the [uh] dance. and she's [um] [short-pause] whisked away with [uh] some horses. and [um] [short-pause] oh , that's the fairy godmother [uh] who [um] [long-pause] uses magic on her. and [um] she goes to the ball and meets a handsome prince. and [uh] at midnight she s hasta leave. [uh] [medium-pause] and he [unclear-speech] [unclear-speech] the [uh] prince finds the [um] [short-pause] her shoe that's left behind. and [um] [short-pause] he tries it [unclear-speech] the servant tries it on the wicked stepsister. but [um] it doesn't fit. and [uh] she recognizes Cinderella recognizes it. and [um] it's a perfect fit. and they live happily ever after. because the prince recognizes her.",
+  "timed_utterances": {
+    "PAR": [
+      {
+        "start_ms": 9731,
+        "end_ms": 11896,
+        "text": "[uh] this is Cinderella."
+      },
+      {
+        "start_ms": 12279,
+        "end_ms": 16249,
+        "text": "those are her two stepsisters and the wicked stepmother."
+      },
+      {
+        "start_ms": 17855,
+        "end_ms": 27702,
+        "text": "[non-verbal] and [um] [medium-pause] she:'s washing the floor."
+      },
+      {
+        "start_ms": 28885,
+        "end_ms": 41114,
+        "text": "[uh] because [uh] [short-pause] the wicked stepsisters and stepmother [um] [short-pause] tell her what to do."
+      },
+      {
+        "start_ms": 42497,
+        "end_ms": 54365,
+        "text": "and [um] [long-pause] let's see [long-pause]"
+      },
+      {
+        "start_ms": 58689,
+        "end_ms": 75093,
+        "text": "[uh] [uh] [short-pause] she's visited by [um] someone or other who tells her that she will [um] [short-pause] go to the [uh] dance."
+      },
+      {
+        "start_ms": 75715,
+        "end_ms": 86700,
+        "text": "and she's [um] [short-pause] whisked away with [uh] some horses."
+      },
+      {
+        "start_ms": 87842,
+        "end_ms": 107253,
+        "text": "and [um] [short-pause] oh , that's the fairy godmother [uh] who [um] [long-pause] uses magic on her."
+      }
+    ],
+    "INV": [
+      {
+        "start_ms": 1642,
+        "end_ms": 8651,
+        "text": "so , what I'd like you to do is [um] [unclear-speech] describe the Cinderella story."
+      }
+    ]
+  },
+  "token_mapping_examples": [
+    {
+      "chat_symbol": "&-uh",
+      "token": "[uh]"
+    },
+    {
+      "chat_symbol": "&-um",
+      "token": "[um]"
+    },
+    {
+      "chat_symbol": "(.)",
+      "token": "[short-pause]"
+    },
+    {
+      "chat_symbol": "(..)",
+      "token": "[medium-pause]"
+    },
+    {
+      "chat_symbol": "(...)",
+      "token": "[long-pause]"
+    },
+    {
+      "chat_symbol": "(xxx)",
+      "token": "[unclear-speech]"
+    },
+    {
+      "chat_symbol": "&=laughs",
+      "token": "[laughter]"
+    },
+    {
+      "chat_symbol": "&=inhales",
+      "token": "[non-verbal]"
+    }
+  ]
+}
