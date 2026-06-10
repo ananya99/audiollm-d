@@ -1,0 +1,90 @@
+{
+  "num_input_rows": 672,
+  "num_evaluated": 672,
+  "num_empty_predictions": 0,
+  "num_skipped": 0,
+  "overall_accuracy": 0.5372023809523809,
+  "overall_mean_score": 0.5834165958049886,
+  "by_type": {
+    "count": {
+      "total": 168,
+      "num_empty": 0,
+      "num_evaluated": 168,
+      "count": 168,
+      "accuracy": 0.08928571428571429,
+      "mean_score": 0.27414257369614514,
+      "metric_kind": "count",
+      "off_by_one_accuracy": 0.3869047619047619,
+      "mse": 6.660714285714286,
+      "mae": 2.1011904761904763
+    },
+    "multiple_choice": {
+      "total": 168,
+      "num_empty": 0,
+      "num_evaluated": 168,
+      "count": 168,
+      "accuracy": 0.7023809523809523,
+      "mean_score": 0.7023809523809523,
+      "metric_kind": "multiple_choice"
+    },
+    "yes_no": {
+      "total": 336,
+      "num_empty": 0,
+      "num_evaluated": 336,
+      "count": 336,
+      "accuracy": 0.6785714285714286,
+      "mean_score": 0.6785714285714286,
+      "metric_kind": "yes_no"
+    }
+  },
+  "by_metric_kind": {
+    "count": {
+      "total": 168,
+      "num_empty": 0,
+      "num_evaluated": 168,
+      "count": 168,
+      "accuracy": 0.08928571428571429,
+      "mean_score": 0.27414257369614514,
+      "metric_kind": "count",
+      "off_by_one_accuracy": 0.3869047619047619,
+      "mse": 6.660714285714286,
+      "mae": 2.1011904761904763
+    },
+    "multiple_choice": {
+      "total": 168,
+      "num_empty": 0,
+      "num_evaluated": 168,
+      "count": 168,
+      "accuracy": 0.7023809523809523,
+      "mean_score": 0.7023809523809523,
+      "metric_kind": "multiple_choice"
+    },
+    "yes_no": {
+      "total": 336,
+      "num_empty": 0,
+      "num_evaluated": 336,
+      "count": 336,
+      "accuracy": 0.6785714285714286,
+      "mean_score": 0.6785714285714286,
+      "metric_kind": "yes_no"
+    }
+  },
+  "by_category": {
+    "content": {
+      "total": 336,
+      "num_empty": 0,
+      "num_evaluated": 336,
+      "count": 336,
+      "accuracy": 0.7410714285714286,
+      "mean_score": 0.7410714285714286
+    },
+    "disfluency": {
+      "total": 336,
+      "num_empty": 0,
+      "num_evaluated": 336,
+      "count": 336,
+      "accuracy": 0.3333333333333333,
+      "mean_score": 0.4257617630385488
+    }
+  }
+}

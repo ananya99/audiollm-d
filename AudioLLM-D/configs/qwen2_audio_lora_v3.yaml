@@ -1,0 +1,111 @@
+# v3 = tiered focal loss (1.3 + 1.4) on the settled v2 LoRA design. Also the BASE
+# config the rank sweep (1.5) varies lora.r / use_dora over — everything here
+# except rank and the LoRA/DoRA flag is held constant across the 8 sweep runs.
+#
+# Deltas vs the v2 baseline (qwen2_audio_lora_v2.yaml):
+#   - disfluency_loss_weights: frequency tiers from the 1.1 audit (rare brackets
+#     upweighted, common fillers near-normal).
+#   - focal_gamma: 2.0  -> focal (1-p)^2 down-weighting of easy tokens.
+
+model_name_or_path: Qwen/Qwen2-Audio-7B-Instruct
+output_dir: /scratch/nathan/lora_run/outputs/qwen2-audio-dementia-lora-v3
+
+data:
+  train_manifest: /scratch/merged_data_80_20/train/manifest.jsonl
+  validation_manifest: /scratch/merged_data_80_20/test/manifest.jsonl
+  audio_column: audio_path
+  text_column: text
+  sampling_rate: 16000
+
+special_tokens:
+  - '[short-pause]'
+  - '[medium-pause]'
+  - '[long-pause]'
+  - '[unclear-speech]'
+  - '[laughter]'
+  - '[non-verbal]'
+  - '[uh]'
+  - '[um]'
+disfluency_tokens:
+  - '[short-pause]'
+  - '[medium-pause]'
+  - '[long-pause]'
+  - '[unclear-speech]'
+  - '[laughter]'
+  - '[non-verbal]'
+  - '[uh]'
+  - '[um]'
+
+# Frequency-tiered alpha weights (split at ~300 train occurrences; see the 1.1
+# audit). Used as the focal alpha term. disfluency_loss_weight is the fallback
+# for any disfluency token not listed here.
+disfluency_loss_weight: 2.0
+disfluency_loss_weights:
+  '[uh]': 1.5             # 1127
+  '[unclear-speech]': 1.5 # 945
+  '[um]': 1.5             # 410
+  '[short-pause]': 1.5    # 354
+  '[long-pause]': 3.0     # 233
+  '[medium-pause]': 3.0   # 143
+  '[laughter]': 3.0       # 93
+  '[non-verbal]': 3.0     # 87
+focal_gamma: 2.0
+
+lora:
+  r: 16
+  alpha: 32
+  dropout: 0.05
+  audio_encoder_top_half_only: false
+  use_dora: false
+  target_modules:
+    - q_proj
+    - v_proj
+  modules_to_save:
+    - embed_tokens
+    - lm_head
+    - multi_modal_projector
+  audio_encoder_layers: [24, 25, 26, 27, 28, 29, 30, 31]
+  audio_encoder_rank: 8
+  audio_encoder_alpha: 16
+  audio_encoder_target_modules: [q_proj, v_proj]
+
+param_group_lrs:
+  encoder_lora: 1.0e-4
+  projector:    1.0e-3
+  lm_lora:      2.0e-4
+  new_tokens:   1.0e-3
+
+per_device_train_batch_size: 1
+per_device_eval_batch_size: 1
+gradient_accumulation_steps: 8
+learning_rate: 2.0e-4
+
+num_train_epochs: 16
+warmup_ratio: 0.03
+weight_decay: 0.0
+logging_steps: 5
+
+eval_steps: 83
+save_steps: 166
+save_total_limit: 8
+
+bf16: true
+fp16: false
+gradient_checkpointing: true
+use_4bit: false
+seed: 42
+report_to: wandb
+
+run_pre_post_train_eval: true
+epoch_eval_interval: 2
+
+wandb:
+  entity: lord-of-the-strings
+  project: audiollm-d
+  name: qwen2-audio-dementia-lora-v3
+  tags:
+    - lora
+    - v3
+    - phase1
+    - tiered-focal
+  log_model: false

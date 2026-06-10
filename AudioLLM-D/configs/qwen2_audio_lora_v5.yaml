@@ -1,0 +1,130 @@
+# v5 = v4 architecture with ONE variable changed: the CTC label source.
+#
+# v4 supervised the auxiliary CTC head with transcript-derived (CHAT/MFA) pause labels and
+# regressed. v5 keeps the *exact* v4 architecture, layer config, LM-head loss and eval pipeline
+# and swaps in acoustically-grounded labels from CrisperWhisper VAD (Stage 0-2). The CTC vocab
+# is reduced to silence-only classes (no laughter/non-verbal/unclear/uh/um — those stay with the
+# LM head; VAD can't label them).
+#
+# Deltas vs v4 (qwen2_audio_lora_v4.yaml) — and NOTHING else:
+#   - ctc.labels_dir -> the Stage-2 VAD label dir (build_ctc_labels_vad.py output).
+#   - ctc.classes    -> [speech, short-pause, medium-pause, long-pause] (guards against pointing
+#                       at a v4 label dir by accident; must agree with ctc_vocab.json there).
+#   - output_dir / wandb name / tags -> v5.
+# FROZEN (do not touch — held constant so the label source is isolated): top-8 encoder LoRA
+# (layers 24-31, r=8), the tiered focal LM loss, alpha=0.3, all LRs, schedule, eval.
+
+model_name_or_path: Qwen/Qwen2-Audio-7B-Instruct
+output_dir: /scratch/nathan/lora_run/outputs/qwen2-audio-dementia-lora-v5-vadctc-a03
+
+data:
+  train_manifest: /scratch/merged_data_80_20/train/manifest.jsonl
+  validation_manifest: /scratch/merged_data_80_20/test/manifest.jsonl
+  audio_column: audio_path
+  text_column: text
+  sampling_rate: 16000
+
+special_tokens:
+  - '[short-pause]'
+  - '[medium-pause]'
+  - '[long-pause]'
+  - '[unclear-speech]'
+  - '[laughter]'
+  - '[non-verbal]'
+  - '[uh]'
+  - '[um]'
+disfluency_tokens:
+  - '[short-pause]'
+  - '[medium-pause]'
+  - '[long-pause]'
+  - '[unclear-speech]'
+  - '[laughter]'
+  - '[non-verbal]'
+  - '[uh]'
+  - '[um]'
+
+disfluency_loss_weight: 2.0
+disfluency_loss_weights:
+  '[uh]': 1.5
+  '[unclear-speech]': 1.5
+  '[um]': 1.5
+  '[short-pause]': 1.5
+  '[long-pause]': 3.0
+  '[medium-pause]': 3.0
+  '[laughter]': 3.0
+  '[non-verbal]': 3.0
+focal_gamma: 2.0
+
+# v5 auxiliary CTC head — acoustically-grounded VAD labels. labels_dir must hold the Stage-2
+# output (labels/{clip_id}.npy + ctc_vocab.json with the silence-only vocab below). If Stage 1
+# forced a class collapse, edit `classes` here to match the regenerated ctc_vocab.json.
+ctc:
+  enabled: true
+  labels_dir: /scratch/nathan/lora_run/v5_ctc_labels
+  alpha: 0.3
+  classes:
+    - speech
+    - short-pause
+    - medium-pause
+    - long-pause
+
+lora:
+  r: 16
+  alpha: 32
+  dropout: 0.05
+  audio_encoder_top_half_only: false
+  use_dora: false
+  target_modules:
+    - q_proj
+    - v_proj
+  modules_to_save:
+    - embed_tokens
+    - lm_head
+    - multi_modal_projector
+  audio_encoder_layers: [24, 25, 26, 27, 28, 29, 30, 31]
+  audio_encoder_rank: 8
+  audio_encoder_alpha: 16
+  audio_encoder_target_modules: [q_proj, v_proj]
+
+param_group_lrs:
+  encoder_lora: 1.0e-4
+  projector:    1.0e-3
+  lm_lora:      2.0e-4
+  new_tokens:   1.0e-3
+  ctc_head:     1.0e-3
+
+per_device_train_batch_size: 1
+per_device_eval_batch_size: 1
+gradient_accumulation_steps: 8
+learning_rate: 2.0e-4
+
+num_train_epochs: 16
+warmup_ratio: 0.03
+weight_decay: 0.0
+logging_steps: 5
+
+eval_steps: 83
+save_steps: 166
+save_total_limit: 8
+
+bf16: true
+fp16: false
+gradient_checkpointing: true
+use_4bit: false
+seed: 42
+report_to: wandb
+
+run_pre_post_train_eval: true
+epoch_eval_interval: 2
+
+wandb:
+  entity: lord-of-the-strings
+  project: audiollm-d
+  name: qwen2-audio-dementia-lora-v5-vadctc-a03
+  tags:
+    - lora
+    - v5
+    - phase2
+    - ctc
+    - vad-labels
+  log_model: false

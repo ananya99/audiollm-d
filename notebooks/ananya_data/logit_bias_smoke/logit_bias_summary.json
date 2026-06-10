@@ -1,0 +1,326 @@
+{
+  "adapter": "/scratch/sathvik/outputs/qwen2_audio_lora_curriculum_synth_to_original_v6",
+  "model": "Qwen/Qwen2-Audio-7B-Instruct",
+  "train_config": "/scratch/sathvik/outputs/qwen2_audio_lora_curriculum_synth_to_original_v6/train_config.yaml",
+  "manifest": "/scratch/merged_data_80_20/test/manifest.jsonl",
+  "seed": 42,
+  "dev_fraction": 0.5,
+  "per_token_extra_bias": {},
+  "dev_sweep": [
+    {
+      "bias": 0.0,
+      "num_samples": 8,
+      "wer": 0.18473895582329317,
+      "disfluency_token_metrics": {
+        "num_samples": 8,
+        "disfluency_token_precision": 0.8536585365853658,
+        "disfluency_token_recall": 0.660377358490566,
+        "disfluency_token_f1": 0.7446808510638298,
+        "disfluency_token_exact_set_accuracy": 0.25,
+        "any_disfluency_token_accuracy": 1.0,
+        "disfluency_token_hallucination_rate": 0.14634146341463414,
+        "disfluency_token_miss_rate": 0.33962264150943394,
+        "disfluency_token_tp": 35,
+        "disfluency_token_pred_total": 41,
+        "disfluency_token_ref_total": 53,
+        "per_token_stats": {
+          "[short-pause]": {
+            "tp": 5,
+            "pred_total": 5,
+            "ref_total": 10,
+            "precision": 1.0,
+            "recall": 0.5,
+            "f1": 0.6666666666666666
+          },
+          "[medium-pause]": {
+            "tp": 1,
+            "pred_total": 2,
+            "ref_total": 3,
+            "precision": 0.5,
+            "recall": 0.3333333333333333,
+            "f1": 0.4
+          },
+          "[long-pause]": {
+            "tp": 1,
+            "pred_total": 2,
+            "ref_total": 3,
+            "precision": 0.5,
+            "recall": 0.3333333333333333,
+            "f1": 0.4
+          },
+          "[unclear-speech]": {
+            "tp": 1,
+            "pred_total": 3,
+            "ref_total": 3,
+            "precision": 0.3333333333333333,
+            "recall": 0.3333333333333333,
+            "f1": 0.3333333333333333
+          },
+          "[laughter]": {
+            "tp": 0,
+            "pred_total": 0,
+            "ref_total": 0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "[non-verbal]": {
+            "tp": 0,
+            "pred_total": 0,
+            "ref_total": 1,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "[uh]": {
+            "tp": 11,
+            "pred_total": 11,
+            "ref_total": 17,
+            "precision": 1.0,
+            "recall": 0.6470588235294118,
+            "f1": 0.7857142857142858
+          },
+          "[um]": {
+            "tp": 16,
+            "pred_total": 18,
+            "ref_total": 16,
+            "precision": 0.8888888888888888,
+            "recall": 1.0,
+            "f1": 0.9411764705882353
+          }
+        },
+        "disfluency_token_order_tp": 32,
+        "disfluency_token_order_pred_total": 41,
+        "disfluency_token_order_ref_total": 53,
+        "disfluency_token_order_precision": 0.7804878048780488,
+        "disfluency_token_order_recall": 0.6037735849056604,
+        "disfluency_token_order_f1": 0.6808510638297872,
+        "per_token_order_aware_stats": {
+          "[short-pause]": {
+            "tp": 3,
+            "pred_total": 5,
+            "ref_total": 10,
+            "precision": 0.6,
+            "recall": 0.3,
+            "f1": 0.4
+          },
+          "[medium-pause]": {
+            "tp": 1,
+            "pred_total": 2,
+            "ref_total": 3,
+            "precision": 0.5,
+            "recall": 0.3333333333333333,
+            "f1": 0.4
+          },
+          "[long-pause]": {
+            "tp": 1,
+            "pred_total": 2,
+            "ref_total": 3,
+            "precision": 0.5,
+            "recall": 0.3333333333333333,
+            "f1": 0.4
+          },
+          "[unclear-speech]": {
+            "tp": 1,
+            "pred_total": 3,
+            "ref_total": 3,
+            "precision": 0.3333333333333333,
+            "recall": 0.3333333333333333,
+            "f1": 0.3333333333333333
+          },
+          "[laughter]": {
+            "tp": 0,
+            "pred_total": 0,
+            "ref_total": 0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "[non-verbal]": {
+            "tp": 0,
+            "pred_total": 0,
+            "ref_total": 1,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "[uh]": {
+            "tp": 11,
+            "pred_total": 11,
+            "ref_total": 17,
+            "precision": 1.0,
+            "recall": 0.6470588235294118,
+            "f1": 0.7857142857142858
+          },
+          "[um]": {
+            "tp": 15,
+            "pred_total": 18,
+            "ref_total": 16,
+            "precision": 0.8333333333333334,
+            "recall": 0.9375,
+            "f1": 0.8823529411764706
+          }
+        }
+      }
+    },
+    {
+      "bias": 2.0,
+      "num_samples": 8,
+      "wer": 0.18473895582329317,
+      "disfluency_token_metrics": {
+        "num_samples": 8,
+        "disfluency_token_precision": 0.8536585365853658,
+        "disfluency_token_recall": 0.660377358490566,
+        "disfluency_token_f1": 0.7446808510638298,
+        "disfluency_token_exact_set_accuracy": 0.25,
+        "any_disfluency_token_accuracy": 1.0,
+        "disfluency_token_hallucination_rate": 0.14634146341463414,
+        "disfluency_token_miss_rate": 0.33962264150943394,
+        "disfluency_token_tp": 35,
+        "disfluency_token_pred_total": 41,
+        "disfluency_token_ref_total": 53,
+        "per_token_stats": {
+          "[short-pause]": {
+            "tp": 5,
+            "pred_total": 5,
+            "ref_total": 10,
+            "precision": 1.0,
+            "recall": 0.5,
+            "f1": 0.6666666666666666
+          },
+          "[medium-pause]": {
+            "tp": 1,
+            "pred_total": 2,
+            "ref_total": 3,
+            "precision": 0.5,
+            "recall": 0.3333333333333333,
+            "f1": 0.4
+          },
+          "[long-pause]": {
+            "tp": 1,
+            "pred_total": 2,
+            "ref_total": 3,
+            "precision": 0.5,
+            "recall": 0.3333333333333333,
+            "f1": 0.4
+          },
+          "[unclear-speech]": {
+            "tp": 1,
+            "pred_total": 3,
+            "ref_total": 3,
+            "precision": 0.3333333333333333,
+            "recall": 0.3333333333333333,
+            "f1": 0.3333333333333333
+          },
+          "[laughter]": {
+            "tp": 0,
+            "pred_total": 0,
+            "ref_total": 0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "[non-verbal]": {
+            "tp": 0,
+            "pred_total": 0,
+            "ref_total": 1,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "[uh]": {
+            "tp": 11,
+            "pred_total": 11,
+            "ref_total": 17,
+            "precision": 1.0,
+            "recall": 0.6470588235294118,
+            "f1": 0.7857142857142858
+          },
+          "[um]": {
+            "tp": 16,
+            "pred_total": 18,
+            "ref_total": 16,
+            "precision": 0.8888888888888888,
+            "recall": 1.0,
+            "f1": 0.9411764705882353
+          }
+        },
+        "disfluency_token_order_tp": 32,
+        "disfluency_token_order_pred_total": 41,
+        "disfluency_token_order_ref_total": 53,
+        "disfluency_token_order_precision": 0.7804878048780488,
+        "disfluency_token_order_recall": 0.6037735849056604,
+        "disfluency_token_order_f1": 0.6808510638297872,
+        "per_token_order_aware_stats": {
+          "[short-pause]": {
+            "tp": 3,
+            "pred_total": 5,
+            "ref_total": 10,
+            "precision": 0.6,
+            "recall": 0.3,
+            "f1": 0.4
+          },
+          "[medium-pause]": {
+            "tp": 1,
+            "pred_total": 2,
+            "ref_total": 3,
+            "precision": 0.5,
+            "recall": 0.3333333333333333,
+            "f1": 0.4
+          },
+          "[long-pause]": {
+            "tp": 1,
+            "pred_total": 2,
+            "ref_total": 3,
+            "precision": 0.5,
+            "recall": 0.3333333333333333,
+            "f1": 0.4
+          },
+          "[unclear-speech]": {
+            "tp": 1,
+            "pred_total": 3,
+            "ref_total": 3,
+            "precision": 0.3333333333333333,
+            "recall": 0.3333333333333333,
+            "f1": 0.3333333333333333
+          },
+          "[laughter]": {
+            "tp": 0,
+            "pred_total": 0,
+            "ref_total": 0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "[non-verbal]": {
+            "tp": 0,
+            "pred_total": 0,
+            "ref_total": 1,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "[uh]": {
+            "tp": 11,
+            "pred_total": 11,
+            "ref_total": 17,
+            "precision": 1.0,
+            "recall": 0.6470588235294118,
+            "f1": 0.7857142857142858
+          },
+          "[um]": {
+            "tp": 15,
+            "pred_total": 18,
+            "ref_total": 16,
+            "precision": 0.8333333333333334,
+            "recall": 0.9375,
+            "f1": 0.8823529411764706
+          }
+        }
+      }
+    }
+  ],
+  "best_dev_bias": 0.0,
+  "eval_baseline": null,
+  "eval_best_bias": null
+}

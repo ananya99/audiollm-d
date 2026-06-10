@@ -1,0 +1,112 @@
+model_name_or_path: Qwen/Qwen2-Audio-7B-Instruct
+audio_encoder_init_model: nyrahealth/CrisperWhisper
+output_dir: /scratch/sathvik/outputs/lora_epochs=10_orig_disfluencytoken_weights_noiseaug_v11_crisperwhisper
+
+data:
+  train_manifest: /scratch/merged_data_80_20/train/manifest.jsonl
+  validation_manifest: /scratch/merged_data_80_20/test/manifest.jsonl
+  audio_column: audio_path
+  text_column: text
+  sampling_rate: 16000
+  # Overall probability of augmenting any single training sample.
+  noise_augmentation_prob: 0.5
+  # Types to sample uniformly from on each augmented example.
+  augmentation_types:
+    - white_noise
+    - babble
+    - reverb
+    - speed
+    - codec
+  # White Gaussian noise (SNR dB).
+  noise_snr_db_min: 12.0
+  noise_snr_db_max: 30.0
+  # Babble / speech-shaped noise (SNR dB).
+  babble_snr_db_min: 10.0
+  babble_snr_db_max: 25.0
+  babble_num_sources: 4
+  # Room impulse response reverb (RT60 in ms).
+  reverb_rt60_ms_min: 200.0
+  reverb_rt60_ms_max: 800.0
+  # Speed perturbation (multiplicative rate).
+  speed_min: 0.85
+  speed_max: 1.15
+  # Codec compression (intermediate sample rate Hz).
+  codec_resample_rate: 8000
+
+special_tokens:
+  - '[short-pause]'
+  - '[medium-pause]'
+  - '[long-pause]'
+  - '[unclear-speech]'
+  - '[laughter]'
+  - '[non-verbal]'
+  - '[uh]'
+  - '[um]'
+disfluency_tokens:
+  - '[short-pause]'
+  - '[medium-pause]'
+  - '[long-pause]'
+  - '[unclear-speech]'
+  - '[laughter]'
+  - '[non-verbal]'
+  - '[uh]'
+  - '[um]'
+
+lora:
+  r: 16
+  alpha: 32
+  dropout: 0.1
+  enable_audio_lora: true
+  enable_llm_lora: true
+  train_multi_modal_projector: true
+  audio_encoder_top_half_only: false
+  use_dora: false
+  target_modules:
+    - q_proj
+    - k_proj
+    - v_proj
+    - out_proj
+    - o_proj
+    - gate_proj
+    - up_proj
+    - down_proj
+  modules_to_save:
+    - embed_tokens
+    - lm_head
+    - multi_modal_projector
+
+per_device_train_batch_size: 1
+per_device_eval_batch_size: 1
+gradient_accumulation_steps: 8
+learning_rate: 0.00008
+num_train_epochs: 10
+warmup_ratio: 0.03
+weight_decay: 0.01
+logging_steps: 10
+eval_steps: 50
+save_steps: 50
+save_total_limit: 2
+bf16: true
+fp16: false
+gradient_checkpointing: true
+use_4bit: false
+seed: 42
+report_to: wandb
+
+wandb:
+  entity: lord-of-the-strings
+  project: audiollm-d
+  name: qwen2-audio-dementia-lora
+  tags:
+    - lora
+  log_model: false
+run_pre_post_train_eval: true
+pre_post_eval_max_samples: null
+pre_post_eval_max_new_tokens: 256
+eval_generation_batch_size: 4
+eval_generation_do_sample: false
+eval_generation_temperature: 1.0
+run_lora_init_sanity_check: false
+lora_init_sanity_check_max_samples: 16
+lora_init_sanity_check_split: test
+lora_init_sanity_check_max_new_tokens: 256

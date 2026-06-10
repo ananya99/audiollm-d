@@ -1,0 +1,56 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "audiollm-d"
+version = "0.1.0"
+description = "LoRA fine-tuning utilities for Qwen2-Audio on dementia speech transcription."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "accelerate>=0.33.0",
+    "datasets>=2.20.0",
+    "jiwer>=3.0.4",
+    "librosa>=0.10.2",
+    "numpy>=1.26.0",
+    "peft>=0.12.0",
+    "python-dotenv>=1.0.0",
+    "pyyaml>=6.0.1",
+    "soundfile>=0.12.1",
+    "torch>=2.3.0",
+    "torchinfo>=1.8.0",
+    "transformers>=4.45.0",
+    "wandb>=0.17.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "ruff>=0.6.0",
+    "google-genai>=1.0.0",
+]
+
+[project.scripts]
+audiollm-d-build-manifest = "audiollm_d.manifest:main"
+audiollm-d-train = "audiollm_d.train:main"
+audiollm-d-transcribe = "audiollm_d.inference:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint.per-file-ignores]
+# These entrypoint modules call load_dotenv() before importing the package so env
+# vars (HF_HOME, WANDB_*) are set before any heavy import reads them. That puts the
+# package imports below module-level code, which is the intent — not a mistake.
+"src/audiollm_d/train.py" = ["E402"]
+"src/audiollm_d/inference.py" = ["E402"]
+"scripts/transcribe.py" = ["E402"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

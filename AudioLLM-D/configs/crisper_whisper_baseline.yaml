@@ -1,0 +1,31 @@
+model_name_or_path: nyrahealth/CrisperWhisper
+output_dir: /scratch/sathvik/outputs/baselines/crisper-whisper
+
+data:
+  train_manifest: /scratch/merged_data_80_20/train/manifest.jsonl
+  validation_manifest: /scratch/merged_data_80_20/test/manifest.jsonl
+  audio_column: audio_path
+  text_column: text
+  sampling_rate: 16000
+
+special_tokens:
+  - "[short-pause]"
+  - "[medium-pause]"
+  - "[long-pause]"
+  - "[unclear-speech]"
+  - "[laughter]"
+  - "[non-verbal]"
+  - "[uh]"
+  - "[um]"
+disfluency_tokens:
+  - "[short-pause]"
+  - "[medium-pause]"
+  - "[long-pause]"
+  - "[unclear-speech]"
+  - "[laughter]"
+  - "[non-verbal]"
+  - "[uh]"
+  - "[um]"
+
+seed: 42
+report_to: none

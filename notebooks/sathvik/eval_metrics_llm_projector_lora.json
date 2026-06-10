@@ -1,0 +1,1010 @@
+{
+  "train_manifest": "/scratch/sathvik/merged_data_80_20_corrected/train/manifest.jsonl",
+  "test_manifest": "/scratch/sathvik/merged_data_80_20_corrected/test/manifest.jsonl",
+  "before_train": {
+    "train": {
+      "num_samples": 658,
+      "wer": 0.493207233295339,
+      "disfluency_token_metrics": {
+        "num_samples": 658,
+        "disfluency_token_precision": 0.0,
+        "disfluency_token_recall": 0.0,
+        "disfluency_token_f1": 0.0,
+        "disfluency_token_exact_set_accuracy": 0.0911854103343465,
+        "any_disfluency_token_accuracy": 0.0911854103343465,
+        "disfluency_token_hallucination_rate": 0.0,
+        "disfluency_token_miss_rate": 1.0,
+        "disfluency_token_tp": 0,
+        "disfluency_token_pred_total": 0,
+        "disfluency_token_ref_total": 3392,
+        "per_token_stats": {
+          "[short-pause]": {
+            "tp": 0,
+            "pred_total": 0,
+            "ref_total": 354,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "[medium-pause]": {
+            "tp": 0,
+            "pred_total": 0,
+            "ref_total": 143,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "[long-pause]": {
+            "tp": 0,
+            "pred_total": 0,
+            "ref_total": 233,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "[unclear-speech]": {
+            "tp": 0,
+            "pred_total": 0,
+            "ref_total": 945,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "[laughter]": {
+            "tp": 0,
+            "pred_total": 0,
+            "ref_total": 93,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "[non-verbal]": {
+            "tp": 0,
+            "pred_total": 0,
+            "ref_total": 87,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "[uh]": {
+            "tp": 0,
+            "pred_total": 0,
+            "ref_total": 1127,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "[um]": {
+            "tp": 0,
+            "pred_total": 0,
+            "ref_total": 410,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        },
+        "disfluency_token_order_tp": 0,
+        "disfluency_token_order_pred_total": 0,
+        "disfluency_token_order_ref_total": 3190,
+        "disfluency_token_order_precision": 0.0,
+        "disfluency_token_order_recall": 0.0,
+        "disfluency_token_order_f1": 0.0,
+        "per_token_order_aware_stats": {
+          "[short-pause]": {
+            "tp": 0,
+            "pred_total": 0,
+            "ref_total": 352,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "[medium-pause]": {
+            "tp": 0,
+            "pred_total": 0,
+            "ref_total": 137,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "[long-pause]": {
+            "tp": 0,
+            "pred_total": 0,
+            "ref_total": 233,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "[unclear-speech]": {
+            "tp": 0,
+            "pred_total": 0,
+            "ref_total": 821,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "[laughter]": {
+            "tp": 0,
+            "pred_total": 0,
+            "ref_total": 36,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "[non-verbal]": {
+            "tp": 0,
+            "pred_total": 0,
+            "ref_total": 76,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "[uh]": {
+            "tp": 0,
+            "pred_total": 0,
+            "ref_total": 1126,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "[um]": {
+            "tp": 0,
+            "pred_total": 0,
+            "ref_total": 409,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        }
+      }
+    },
+    "test": {
+      "num_samples": 168,
+      "wer": 0.5687834514682483,
+      "disfluency_token_metrics": {
+        "num_samples": 168,
+        "disfluency_token_precision": 0.0,
+        "disfluency_token_recall": 0.0,
+        "disfluency_token_f1": 0.0,
+        "disfluency_token_exact_set_accuracy": 0.07142857142857142,
+        "any_disfluency_token_accuracy": 0.07142857142857142,
+        "disfluency_token_hallucination_rate": 0.0,
+        "disfluency_token_miss_rate": 1.0,
+        "disfluency_token_tp": 0,
+        "disfluency_token_pred_total": 0,
+        "disfluency_token_ref_total": 693,
+        "per_token_stats": {
+          "[short-pause]": {
+            "tp": 0,
+            "pred_total": 0,
+            "ref_total": 105,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "[medium-pause]": {
+            "tp": 0,
+            "pred_total": 0,
+            "ref_total": 53,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "[long-pause]": {
+            "tp": 0,
+            "pred_total": 0,
+            "ref_total": 96,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "[unclear-speech]": {
+            "tp": 0,
+            "pred_total": 0,
+            "ref_total": 132,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "[laughter]": {
+            "tp": 0,
+            "pred_total": 0,
+            "ref_total": 40,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "[non-verbal]": {
+            "tp": 0,
+            "pred_total": 0,
+            "ref_total": 24,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "[uh]": {
+            "tp": 0,
+            "pred_total": 0,
+            "ref_total": 164,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "[um]": {
+            "tp": 0,
+            "pred_total": 0,
+            "ref_total": 79,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        },
+        "disfluency_token_order_tp": 0,
+        "disfluency_token_order_pred_total": 0,
+        "disfluency_token_order_ref_total": 646,
+        "disfluency_token_order_precision": 0.0,
+        "disfluency_token_order_recall": 0.0,
+        "disfluency_token_order_f1": 0.0,
+        "per_token_order_aware_stats": {
+          "[short-pause]": {
+            "tp": 0,
+            "pred_total": 0,
+            "ref_total": 105,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "[medium-pause]": {
+            "tp": 0,
+            "pred_total": 0,
+            "ref_total": 52,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "[long-pause]": {
+            "tp": 0,
+            "pred_total": 0,
+            "ref_total": 95,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "[unclear-speech]": {
+            "tp": 0,
+            "pred_total": 0,
+            "ref_total": 109,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "[laughter]": {
+            "tp": 0,
+            "pred_total": 0,
+            "ref_total": 20,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "[non-verbal]": {
+            "tp": 0,
+            "pred_total": 0,
+            "ref_total": 24,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "[uh]": {
+            "tp": 0,
+            "pred_total": 0,
+            "ref_total": 162,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "[um]": {
+            "tp": 0,
+            "pred_total": 0,
+            "ref_total": 79,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        }
+      }
+    }
+  },
+  "after_train": {
+    "train": {
+      "num_samples": 658,
+      "wer": 0.03813807338036413,
+      "disfluency_token_metrics": {
+        "num_samples": 658,
+        "disfluency_token_precision": 0.9648084708813454,
+        "disfluency_token_recall": 0.9133254716981132,
+        "disfluency_token_f1": 0.9383613509011055,
+        "disfluency_token_exact_set_accuracy": 0.8966565349544073,
+        "any_disfluency_token_accuracy": 0.993920972644377,
+        "disfluency_token_hallucination_rate": 0.03519152911865463,
+        "disfluency_token_miss_rate": 0.0866745283018868,
+        "disfluency_token_tp": 3098,
+        "disfluency_token_pred_total": 3211,
+        "disfluency_token_ref_total": 3392,
+        "per_token_stats": {
+          "[short-pause]": {
+            "tp": 320,
+            "pred_total": 328,
+            "ref_total": 354,
+            "precision": 0.975609756097561,
+            "recall": 0.903954802259887,
+            "f1": 0.93841642228739
+          },
+          "[medium-pause]": {
+            "tp": 133,
+            "pred_total": 137,
+            "ref_total": 143,
+            "precision": 0.9708029197080292,
+            "recall": 0.9300699300699301,
+            "f1": 0.9500000000000001
+          },
+          "[long-pause]": {
+            "tp": 206,
+            "pred_total": 209,
+            "ref_total": 233,
+            "precision": 0.9856459330143541,
+            "recall": 0.8841201716738197,
+            "f1": 0.9321266968325791
+          },
+          "[unclear-speech]": {
+            "tp": 831,
+            "pred_total": 876,
+            "ref_total": 945,
+            "precision": 0.9486301369863014,
+            "recall": 0.8793650793650793,
+            "f1": 0.9126853377265238
+          },
+          "[laughter]": {
+            "tp": 85,
+            "pred_total": 87,
+            "ref_total": 93,
+            "precision": 0.9770114942528736,
+            "recall": 0.9139784946236559,
+            "f1": 0.9444444444444445
+          },
+          "[non-verbal]": {
+            "tp": 81,
+            "pred_total": 82,
+            "ref_total": 87,
+            "precision": 0.9878048780487805,
+            "recall": 0.9310344827586207,
+            "f1": 0.9585798816568047
+          },
+          "[uh]": {
+            "tp": 1052,
+            "pred_total": 1065,
+            "ref_total": 1127,
+            "precision": 0.9877934272300469,
+            "recall": 0.9334516415261757,
+            "f1": 0.9598540145985401
+          },
+          "[um]": {
+            "tp": 390,
+            "pred_total": 427,
+            "ref_total": 410,
+            "precision": 0.9133489461358314,
+            "recall": 0.9512195121951219,
+            "f1": 0.931899641577061
+          }
+        },
+        "disfluency_token_order_tp": 2899,
+        "disfluency_token_order_pred_total": 3029,
+        "disfluency_token_order_ref_total": 3190,
+        "disfluency_token_order_precision": 0.9570815450643777,
+        "disfluency_token_order_recall": 0.9087774294670846,
+        "disfluency_token_order_f1": 0.9323042289757195,
+        "per_token_order_aware_stats": {
+          "[short-pause]": {
+            "tp": 317,
+            "pred_total": 326,
+            "ref_total": 352,
+            "precision": 0.9723926380368099,
+            "recall": 0.9005681818181818,
+            "f1": 0.9351032448377581
+          },
+          "[medium-pause]": {
+            "tp": 128,
+            "pred_total": 132,
+            "ref_total": 137,
+            "precision": 0.9696969696969697,
+            "recall": 0.9343065693430657,
+            "f1": 0.9516728624535317
+          },
+          "[long-pause]": {
+            "tp": 205,
+            "pred_total": 209,
+            "ref_total": 233,
+            "precision": 0.9808612440191388,
+            "recall": 0.8798283261802575,
+            "f1": 0.9276018099547512
+          },
+          "[unclear-speech]": {
+            "tp": 713,
+            "pred_total": 769,
+            "ref_total": 821,
+            "precision": 0.9271781534460338,
+            "recall": 0.8684531059683313,
+            "f1": 0.8968553459119497
+          },
+          "[laughter]": {
+            "tp": 30,
+            "pred_total": 30,
+            "ref_total": 36,
+            "precision": 1.0,
+            "recall": 0.8333333333333334,
+            "f1": 0.9090909090909091
+          },
+          "[non-verbal]": {
+            "tp": 71,
+            "pred_total": 72,
+            "ref_total": 76,
+            "precision": 0.9861111111111112,
+            "recall": 0.9342105263157895,
+            "f1": 0.9594594594594595
+          },
+          "[uh]": {
+            "tp": 1047,
+            "pred_total": 1064,
+            "ref_total": 1126,
+            "precision": 0.9840225563909775,
+            "recall": 0.9298401420959147,
+            "f1": 0.9561643835616438
+          },
+          "[um]": {
+            "tp": 388,
+            "pred_total": 427,
+            "ref_total": 409,
+            "precision": 0.9086651053864169,
+            "recall": 0.9486552567237164,
+            "f1": 0.9282296650717704
+          }
+        }
+      }
+    },
+    "test": {
+      "num_samples": 168,
+      "wer": 0.4902357876464632,
+      "disfluency_token_metrics": {
+        "num_samples": 168,
+        "disfluency_token_precision": 0.6141732283464567,
+        "disfluency_token_recall": 0.45021645021645024,
+        "disfluency_token_f1": 0.5195670274771024,
+        "disfluency_token_exact_set_accuracy": 0.19047619047619047,
+        "any_disfluency_token_accuracy": 0.8630952380952381,
+        "disfluency_token_hallucination_rate": 0.3858267716535433,
+        "disfluency_token_miss_rate": 0.5497835497835498,
+        "disfluency_token_tp": 312,
+        "disfluency_token_pred_total": 508,
+        "disfluency_token_ref_total": 693,
+        "per_token_stats": {
+          "[short-pause]": {
+            "tp": 40,
+            "pred_total": 72,
+            "ref_total": 105,
+            "precision": 0.5555555555555556,
+            "recall": 0.38095238095238093,
+            "f1": 0.4519774011299435
+          },
+          "[medium-pause]": {
+            "tp": 10,
+            "pred_total": 27,
+            "ref_total": 53,
+            "precision": 0.37037037037037035,
+            "recall": 0.18867924528301888,
+            "f1": 0.25
+          },
+          "[long-pause]": {
+            "tp": 29,
+            "pred_total": 54,
+            "ref_total": 96,
+            "precision": 0.5370370370370371,
+            "recall": 0.3020833333333333,
+            "f1": 0.38666666666666666
+          },
+          "[unclear-speech]": {
+            "tp": 56,
+            "pred_total": 116,
+            "ref_total": 132,
+            "precision": 0.4827586206896552,
+            "recall": 0.42424242424242425,
+            "f1": 0.45161290322580644
+          },
+          "[laughter]": {
+            "tp": 9,
+            "pred_total": 16,
+            "ref_total": 40,
+            "precision": 0.5625,
+            "recall": 0.225,
+            "f1": 0.3214285714285714
+          },
+          "[non-verbal]": {
+            "tp": 5,
+            "pred_total": 11,
+            "ref_total": 24,
+            "precision": 0.45454545454545453,
+            "recall": 0.20833333333333334,
+            "f1": 0.28571428571428575
+          },
+          "[uh]": {
+            "tp": 105,
+            "pred_total": 135,
+            "ref_total": 164,
+            "precision": 0.7777777777777778,
+            "recall": 0.6402439024390244,
+            "f1": 0.7023411371237458
+          },
+          "[um]": {
+            "tp": 58,
+            "pred_total": 77,
+            "ref_total": 79,
+            "precision": 0.7532467532467533,
+            "recall": 0.7341772151898734,
+            "f1": 0.7435897435897437
+          }
+        },
+        "disfluency_token_order_tp": 185,
+        "disfluency_token_order_pred_total": 469,
+        "disfluency_token_order_ref_total": 646,
+        "disfluency_token_order_precision": 0.39445628997867804,
+        "disfluency_token_order_recall": 0.28637770897832815,
+        "disfluency_token_order_f1": 0.3318385650224215,
+        "per_token_order_aware_stats": {
+          "[short-pause]": {
+            "tp": 16,
+            "pred_total": 72,
+            "ref_total": 105,
+            "precision": 0.2222222222222222,
+            "recall": 0.1523809523809524,
+            "f1": 0.1807909604519774
+          },
+          "[medium-pause]": {
+            "tp": 5,
+            "pred_total": 27,
+            "ref_total": 52,
+            "precision": 0.18518518518518517,
+            "recall": 0.09615384615384616,
+            "f1": 0.12658227848101267
+          },
+          "[long-pause]": {
+            "tp": 11,
+            "pred_total": 53,
+            "ref_total": 95,
+            "precision": 0.20754716981132076,
+            "recall": 0.11578947368421053,
+            "f1": 0.14864864864864866
+          },
+          "[unclear-speech]": {
+            "tp": 11,
+            "pred_total": 87,
+            "ref_total": 109,
+            "precision": 0.12643678160919541,
+            "recall": 0.10091743119266056,
+            "f1": 0.11224489795918367
+          },
+          "[laughter]": {
+            "tp": 1,
+            "pred_total": 9,
+            "ref_total": 20,
+            "precision": 0.1111111111111111,
+            "recall": 0.05,
+            "f1": 0.06896551724137932
+          },
+          "[non-verbal]": {
+            "tp": 1,
+            "pred_total": 9,
+            "ref_total": 24,
+            "precision": 0.1111111111111111,
+            "recall": 0.041666666666666664,
+            "f1": 0.06060606060606061
+          },
+          "[uh]": {
+            "tp": 85,
+            "pred_total": 135,
+            "ref_total": 162,
+            "precision": 0.6296296296296297,
+            "recall": 0.5246913580246914,
+            "f1": 0.5723905723905723
+          },
+          "[um]": {
+            "tp": 55,
+            "pred_total": 77,
+            "ref_total": 79,
+            "precision": 0.7142857142857143,
+            "recall": 0.6962025316455697,
+            "f1": 0.7051282051282052
+          }
+        }
+      }
+    }
+  },
+  "before_train_loss_metrics": {
+    "train": {
+      "before_train_loss": 17.102649688720703,
+      "before_train_model_preparation_time": 0.0253,
+      "before_train_runtime": 87.0079,
+      "before_train_samples_per_second": 7.563,
+      "before_train_steps_per_second": 7.563,
+      "lm_loss": 17.102648,
+      "aux_frame_loss": 0.0,
+      "epoch": 0
+    },
+    "test": {
+      "before_test_loss": 17.06735610961914,
+      "before_test_model_preparation_time": 0.0253,
+      "before_test_runtime": 22.103,
+      "before_test_samples_per_second": 7.601,
+      "before_test_steps_per_second": 7.601,
+      "lm_loss": 17.067357,
+      "aux_frame_loss": 0.0,
+      "epoch": 0
+    }
+  },
+  "after_train_loss_metrics": {
+    "train": {
+      "after_train_loss": 6.503186225891113,
+      "after_train_model_preparation_time": 0.0253,
+      "after_train_runtime": 104.4533,
+      "after_train_samples_per_second": 6.299,
+      "after_train_steps_per_second": 6.299,
+      "lm_loss": 6.503187,
+      "aux_frame_loss": 0.0,
+      "epoch": 10.0
+    },
+    "test": {
+      "after_test_loss": 6.633793354034424,
+      "after_test_model_preparation_time": 0.0253,
+      "after_test_runtime": 34.7631,
+      "after_test_samples_per_second": 4.833,
+      "after_test_steps_per_second": 4.833,
+      "lm_loss": 6.633793,
+      "aux_frame_loss": 0.0,
+      "epoch": 10.0
+    }
+  },
+  "epoch_metrics": {
+    "epoch_005": {
+      "metrics": {
+        "train": {
+          "num_samples": 658,
+          "wer": 0.24281445426819875,
+          "disfluency_token_metrics": {
+            "num_samples": 658,
+            "disfluency_token_precision": 0.7723061921014139,
+            "disfluency_token_recall": 0.4669811320754717,
+            "disfluency_token_f1": 0.5820319676648907,
+            "disfluency_token_exact_set_accuracy": 0.33586626139817627,
+            "any_disfluency_token_accuracy": 0.8358662613981763,
+            "disfluency_token_hallucination_rate": 0.22769380789858606,
+            "disfluency_token_miss_rate": 0.5330188679245284,
+            "disfluency_token_tp": 1584,
+            "disfluency_token_pred_total": 2051,
+            "disfluency_token_ref_total": 3392,
+            "per_token_stats": {
+              "[short-pause]": {
+                "tp": 54,
+                "pred_total": 84,
+                "ref_total": 354,
+                "precision": 0.6428571428571429,
+                "recall": 0.15254237288135594,
+                "f1": 0.2465753424657534
+              },
+              "[medium-pause]": {
+                "tp": 67,
+                "pred_total": 97,
+                "ref_total": 143,
+                "precision": 0.6907216494845361,
+                "recall": 0.46853146853146854,
+                "f1": 0.5583333333333333
+              },
+              "[long-pause]": {
+                "tp": 104,
+                "pred_total": 141,
+                "ref_total": 233,
+                "precision": 0.7375886524822695,
+                "recall": 0.44635193133047213,
+                "f1": 0.556149732620321
+              },
+              "[unclear-speech]": {
+                "tp": 232,
+                "pred_total": 363,
+                "ref_total": 945,
+                "precision": 0.6391184573002755,
+                "recall": 0.2455026455026455,
+                "f1": 0.3547400611620795
+              },
+              "[laughter]": {
+                "tp": 34,
+                "pred_total": 36,
+                "ref_total": 93,
+                "precision": 0.9444444444444444,
+                "recall": 0.3655913978494624,
+                "f1": 0.5271317829457365
+              },
+              "[non-verbal]": {
+                "tp": 31,
+                "pred_total": 135,
+                "ref_total": 87,
+                "precision": 0.22962962962962963,
+                "recall": 0.3563218390804598,
+                "f1": 0.27927927927927926
+              },
+              "[uh]": {
+                "tp": 738,
+                "pred_total": 767,
+                "ref_total": 1127,
+                "precision": 0.9621903520208605,
+                "recall": 0.6548358473824313,
+                "f1": 0.7793030623020063
+              },
+              "[um]": {
+                "tp": 324,
+                "pred_total": 428,
+                "ref_total": 410,
+                "precision": 0.7570093457943925,
+                "recall": 0.7902439024390244,
+                "f1": 0.7732696897374702
+              }
+            },
+            "disfluency_token_order_tp": 1399,
+            "disfluency_token_order_pred_total": 2013,
+            "disfluency_token_order_ref_total": 3190,
+            "disfluency_token_order_precision": 0.6949826130153999,
+            "disfluency_token_order_recall": 0.43855799373040755,
+            "disfluency_token_order_f1": 0.537766673073227,
+            "per_token_order_aware_stats": {
+              "[short-pause]": {
+                "tp": 52,
+                "pred_total": 84,
+                "ref_total": 352,
+                "precision": 0.6190476190476191,
+                "recall": 0.14772727272727273,
+                "f1": 0.23853211009174316
+              },
+              "[medium-pause]": {
+                "tp": 60,
+                "pred_total": 97,
+                "ref_total": 137,
+                "precision": 0.6185567010309279,
+                "recall": 0.43795620437956206,
+                "f1": 0.5128205128205129
+              },
+              "[long-pause]": {
+                "tp": 85,
+                "pred_total": 141,
+                "ref_total": 233,
+                "precision": 0.6028368794326241,
+                "recall": 0.3648068669527897,
+                "f1": 0.4545454545454546
+              },
+              "[unclear-speech]": {
+                "tp": 165,
+                "pred_total": 348,
+                "ref_total": 821,
+                "precision": 0.47413793103448276,
+                "recall": 0.20097442143727162,
+                "f1": 0.28229255774165957
+              },
+              "[laughter]": {
+                "tp": 11,
+                "pred_total": 17,
+                "ref_total": 36,
+                "precision": 0.6470588235294118,
+                "recall": 0.3055555555555556,
+                "f1": 0.41509433962264153
+              },
+              "[non-verbal]": {
+                "tp": 22,
+                "pred_total": 132,
+                "ref_total": 76,
+                "precision": 0.16666666666666666,
+                "recall": 0.2894736842105263,
+                "f1": 0.21153846153846154
+              },
+              "[uh]": {
+                "tp": 694,
+                "pred_total": 767,
+                "ref_total": 1126,
+                "precision": 0.9048239895697523,
+                "recall": 0.6163410301953819,
+                "f1": 0.7332276809297411
+              },
+              "[um]": {
+                "tp": 310,
+                "pred_total": 427,
+                "ref_total": 409,
+                "precision": 0.7259953161592506,
+                "recall": 0.7579462102689487,
+                "f1": 0.7416267942583732
+              }
+            }
+          }
+        },
+        "test": {
+          "num_samples": 168,
+          "wer": 0.39982641400260377,
+          "disfluency_token_metrics": {
+            "num_samples": 168,
+            "disfluency_token_precision": 0.7544483985765125,
+            "disfluency_token_recall": 0.3059163059163059,
+            "disfluency_token_f1": 0.4353182751540041,
+            "disfluency_token_exact_set_accuracy": 0.19642857142857142,
+            "any_disfluency_token_accuracy": 0.7619047619047619,
+            "disfluency_token_hallucination_rate": 0.24555160142348753,
+            "disfluency_token_miss_rate": 0.6940836940836941,
+            "disfluency_token_tp": 212,
+            "disfluency_token_pred_total": 281,
+            "disfluency_token_ref_total": 693,
+            "per_token_stats": {
+              "[short-pause]": {
+                "tp": 13,
+                "pred_total": 13,
+                "ref_total": 105,
+                "precision": 1.0,
+                "recall": 0.12380952380952381,
+                "f1": 0.22033898305084745
+              },
+              "[medium-pause]": {
+                "tp": 15,
+                "pred_total": 30,
+                "ref_total": 53,
+                "precision": 0.5,
+                "recall": 0.2830188679245283,
+                "f1": 0.3614457831325301
+              },
+              "[long-pause]": {
+                "tp": 17,
+                "pred_total": 23,
+                "ref_total": 96,
+                "precision": 0.7391304347826086,
+                "recall": 0.17708333333333334,
+                "f1": 0.2857142857142857
+              },
+              "[unclear-speech]": {
+                "tp": 22,
+                "pred_total": 41,
+                "ref_total": 132,
+                "precision": 0.5365853658536586,
+                "recall": 0.16666666666666666,
+                "f1": 0.2543352601156069
+              },
+              "[laughter]": {
+                "tp": 2,
+                "pred_total": 3,
+                "ref_total": 40,
+                "precision": 0.6666666666666666,
+                "recall": 0.05,
+                "f1": 0.09302325581395349
+              },
+              "[non-verbal]": {
+                "tp": 1,
+                "pred_total": 7,
+                "ref_total": 24,
+                "precision": 0.14285714285714285,
+                "recall": 0.041666666666666664,
+                "f1": 0.06451612903225806
+              },
+              "[uh]": {
+                "tp": 80,
+                "pred_total": 86,
+                "ref_total": 164,
+                "precision": 0.9302325581395349,
+                "recall": 0.4878048780487805,
+                "f1": 0.64
+              },
+              "[um]": {
+                "tp": 62,
+                "pred_total": 78,
+                "ref_total": 79,
+                "precision": 0.7948717948717948,
+                "recall": 0.7848101265822784,
+                "f1": 0.7898089171974522
+              }
+            },
+            "disfluency_token_order_tp": 158,
+            "disfluency_token_order_pred_total": 271,
+            "disfluency_token_order_ref_total": 646,
+            "disfluency_token_order_precision": 0.5830258302583026,
+            "disfluency_token_order_recall": 0.24458204334365324,
+            "disfluency_token_order_f1": 0.3446019629225736,
+            "per_token_order_aware_stats": {
+              "[short-pause]": {
+                "tp": 6,
+                "pred_total": 13,
+                "ref_total": 105,
+                "precision": 0.46153846153846156,
+                "recall": 0.05714285714285714,
+                "f1": 0.10169491525423728
+              },
+              "[medium-pause]": {
+                "tp": 10,
+                "pred_total": 30,
+                "ref_total": 52,
+                "precision": 0.3333333333333333,
+                "recall": 0.19230769230769232,
+                "f1": 0.2439024390243902
+              },
+              "[long-pause]": {
+                "tp": 8,
+                "pred_total": 23,
+                "ref_total": 95,
+                "precision": 0.34782608695652173,
+                "recall": 0.08421052631578947,
+                "f1": 0.13559322033898305
+              },
+              "[unclear-speech]": {
+                "tp": 7,
+                "pred_total": 34,
+                "ref_total": 109,
+                "precision": 0.20588235294117646,
+                "recall": 0.06422018348623854,
+                "f1": 0.0979020979020979
+              },
+              "[laughter]": {
+                "tp": 0,
+                "pred_total": 0,
+                "ref_total": 20,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              },
+              "[non-verbal]": {
+                "tp": 0,
+                "pred_total": 7,
+                "ref_total": 24,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              },
+              "[uh]": {
+                "tp": 68,
+                "pred_total": 86,
+                "ref_total": 162,
+                "precision": 0.7906976744186046,
+                "recall": 0.41975308641975306,
+                "f1": 0.5483870967741935
+              },
+              "[um]": {
+                "tp": 59,
+                "pred_total": 78,
+                "ref_total": 79,
+                "precision": 0.7564102564102564,
+                "recall": 0.7468354430379747,
+                "f1": 0.751592356687898
+              }
+            }
+          }
+        }
+      },
+      "loss_metrics": {
+        "train": {
+          "epoch_005_train_loss": 6.530184268951416,
+          "epoch_005_train_model_preparation_time": 0.0253,
+          "epoch_005_train_runtime": 108.034,
+          "epoch_005_train_samples_per_second": 6.091,
+          "epoch_005_train_steps_per_second": 6.091,
+          "lm_loss": 6.534214,
+          "aux_frame_loss": 0.0,
+          "epoch": 5.0
+        },
+        "test": {
+          "epoch_005_test_loss": 6.5995001792907715,
+          "epoch_005_test_model_preparation_time": 0.0253,
+          "epoch_005_test_runtime": 27.3855,
+          "epoch_005_test_samples_per_second": 6.135,
+          "epoch_005_test_steps_per_second": 6.135,
+          "lm_loss": 6.599501,
+          "aux_frame_loss": 0.0,
+          "epoch": 5.0
+        }
+      }
+    }
+  }
+}

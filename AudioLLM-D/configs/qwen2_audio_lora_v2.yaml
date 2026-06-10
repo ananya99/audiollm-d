@@ -1,0 +1,101 @@
+# v2 = the settled LoRA baseline: uniform weighted-CE (focal_gamma=0,
+# disfluency_loss_weight=2.0) on the v2 LoRA design (LM q,v; audio encoder
+# layers 24-31 at r=8; per-component LRs). v3 (qwen2_audio_lora_v3.yaml) adds the
+# tiered focal loss on top of this exact design, so this is the apples-to-apples
+# baseline the v3 and sweep runs are compared against. run_pre_post_train_eval is
+# on so it reports through the same eval (WER + disfluency F1, incl. edit-F1).
+
+model_name_or_path: Qwen/Qwen2-Audio-7B-Instruct
+output_dir: /scratch/nathan/lora_run/outputs/qwen2-audio-dementia-lora-v2-16ep
+
+data:
+  train_manifest: /scratch/merged_data_80_20/train/manifest.jsonl
+  validation_manifest: /scratch/merged_data_80_20/test/manifest.jsonl
+  audio_column: audio_path
+  text_column: text
+  sampling_rate: 16000
+
+# All 8 disfluencies registered as atomic tokens (1.1 vocab fix).
+special_tokens:
+  - '[short-pause]'
+  - '[medium-pause]'
+  - '[long-pause]'
+  - '[unclear-speech]'
+  - '[laughter]'
+  - '[non-verbal]'
+  - '[uh]'
+  - '[um]'
+disfluency_tokens:
+  - '[short-pause]'
+  - '[medium-pause]'
+  - '[long-pause]'
+  - '[unclear-speech]'
+  - '[laughter]'
+  - '[non-verbal]'
+  - '[uh]'
+  - '[um]'
+
+# Reference loss = uniform weighted-CE (no tiers, no focal).
+disfluency_loss_weight: 2.0
+focal_gamma: 0.0
+
+lora:
+  r: 16
+  alpha: 32
+  dropout: 0.05
+  audio_encoder_top_half_only: false
+  use_dora: false
+  target_modules:
+    - q_proj
+    - v_proj
+  modules_to_save:
+    - embed_tokens
+    - lm_head
+    - multi_modal_projector
+  audio_encoder_layers: [24, 25, 26, 27, 28, 29, 30, 31]
+  audio_encoder_rank: 8
+  audio_encoder_alpha: 16
+  audio_encoder_target_modules: [q_proj, v_proj]
+
+param_group_lrs:
+  encoder_lora: 1.0e-4
+  projector:    1.0e-3
+  lm_lora:      2.0e-4
+  new_tokens:   1.0e-3
+
+per_device_train_batch_size: 1
+per_device_eval_batch_size: 1
+gradient_accumulation_steps: 8
+learning_rate: 2.0e-4
+
+num_train_epochs: 16
+warmup_ratio: 0.03
+weight_decay: 0.0
+logging_steps: 5
+
+eval_steps: 83
+save_steps: 166
+save_total_limit: 8
+
+bf16: true
+fp16: false
+gradient_checkpointing: true
+use_4bit: false
+seed: 42
+report_to: wandb
+
+# Generation eval every 2 epochs aligns with save_steps (166 ~= 2 epochs) so each
+# eval point has a saved checkpoint for best-epoch selection. Lower for finer
+# granularity at higher GPU cost; raise to save time.
+run_pre_post_train_eval: true
+epoch_eval_interval: 2
+
+wandb:
+  entity: lord-of-the-strings
+  project: audiollm-d
+  name: qwen2-audio-dementia-lora-v2-16ep
+  tags:
+    - lora
+    - v2
+    - phase1
+  log_model: false

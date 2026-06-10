@@ -1,0 +1,19 @@
+{
+  "config": "/scratch/sathvik/open-project-m2-lordofthestrings/AudioLLM-D/configs/whisper_large_baseline.yaml",
+  "split": "train",
+  "manifest": "/scratch/merged_data_80_20/train/manifest.jsonl",
+  "whisper_model": "openai/whisper-large",
+  "language": "en",
+  "num_samples": 658,
+  "wer": 0.4601482696183936,
+  "special_tokens_removed_for_normalization": [
+    "[short-pause]",
+    "[medium-pause]",
+    "[long-pause]",
+    "[unclear-speech]",
+    "[laughter]",
+    "[non-verbal]",
+    "[uh]",
+    "[um]"
+  ]
+}

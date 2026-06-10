@@ -1,0 +1,84 @@
+model_name_or_path: Qwen/Qwen2-Audio-7B-Instruct
+output_dir: /scratch/ananya/open-project-m2-lordofthestrings/AudioLLM-D/outputs/qwen2-audio-dementia-dora-gradient-accu16-flash-attn-2-lr-0.0002
+
+data:
+  train_manifest: /scratch/merged_data_80_20/train/manifest.jsonl
+  validation_manifest: /scratch/merged_data_80_20/test/manifest.jsonl
+  audio_column: audio_path
+  text_column: text
+  sampling_rate: 16000
+
+special_tokens:
+  - '[short-pause]'
+  - '[medium-pause]'
+  - '[long-pause]'
+  - '[unclear-speech]'
+  - '[laughter]'
+  - '[non-verbal]'
+  - '[uh]'
+  - '[um]'
+disfluency_tokens:
+  - '[short-pause]'
+  - '[medium-pause]'
+  - '[long-pause]'
+  - '[unclear-speech]'
+  - '[laughter]'
+  - '[non-verbal]'
+  - '[uh]'
+  - '[um]'
+
+disfluency_loss_weight: 2.0
+
+lora:
+  r: 16
+  alpha: 32
+  dropout: 0.05
+  audio_encoder_top_half_only: false
+  use_dora: true
+  target_modules:
+    - q_proj
+    - k_proj
+    - v_proj
+    - out_proj
+    - o_proj
+    - gate_proj
+    - up_proj
+    - down_proj
+  modules_to_save:
+    - embed_tokens
+    - lm_head
+    - multi_modal_projector
+
+per_device_train_batch_size: 1
+per_device_eval_batch_size: 1
+gradient_accumulation_steps: 16
+learning_rate: 0.0002
+num_train_epochs: 5
+warmup_ratio: 0.03
+weight_decay: 0.01
+logging_steps: 10
+eval_steps: 100
+save_steps: 100
+save_total_limit: 2
+bf16: true
+fp16: false
+gradient_checkpointing: true
+use_4bit: false
+seed: 42
+report_to: wandb
+
+wandb:
+  entity: lord-of-the-strings
+  project: audiollm-d
+  name: qwen2-audio-dementia-dora_gradient-accu16-flash-attn-2-lr-0.0002
+  tags:
+    - dora
+  log_model: false
+
+run_pre_post_train_eval: true
+pre_post_eval_max_samples: null
+pre_post_eval_max_new_tokens: 256
+eval_generation_batch_size: 4
+eval_generation_do_sample: false
+eval_generation_temperature: 1.0
+run_lora_init_sanity_check: false

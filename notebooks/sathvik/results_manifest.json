@@ -1,0 +1,77 @@
+[
+  {
+    "dest": "dataset_manifest_test.jsonl",
+    "source": "/scratch/merged_data_80_20/test/manifest.jsonl",
+    "size_bytes": 90844
+  },
+  {
+    "dest": "dataset_manifest_train.jsonl",
+    "source": "/scratch/merged_data_80_20/train/manifest.jsonl",
+    "size_bytes": 383766
+  },
+  {
+    "dest": "eval_metrics_crisperwhisper_baseline_test.json",
+    "source": "/scratch/sathvik/outputs/baselines/crisper-whisper/baseline_eval/crisper_whisper/validation_metrics.json",
+    "size_bytes": 1793
+  },
+  {
+    "dest": "eval_metrics_crisperwhisper_baseline_train.json",
+    "source": "/scratch/sathvik/outputs/baselines/crisper-whisper/baseline_eval/crisper_whisper/train_metrics.json",
+    "size_bytes": 1795
+  },
+  {
+    "dest": "eval_metrics_crisperwhisper_encoder_lora.json",
+    "source": "/scratch/sathvik/outputs/lora_epochs=10_orig_disfluencytoken_weights_noiseaug_v11_crisperwhisper/pre_post_train_eval_metrics.json",
+    "size_bytes": 31742
+  },
+  {
+    "dest": "eval_metrics_llm_only_lora.json",
+    "source": "/scratch/sathvik/outputs/lora_llm_only_epochs=10_disfluencytoken_weights_noiseaug/pre_post_train_eval_metrics.json",
+    "size_bytes": 31908
+  },
+  {
+    "dest": "eval_metrics_llm_projector_lora.json",
+    "source": "/scratch/sathvik/outputs/lora_llm_projector_epochs=10_disfluencytoken_weights_noiseaug/pre_post_train_eval_metrics.json",
+    "size_bytes": 32006
+  },
+  {
+    "dest": "eval_metrics_mfa_classification_head_lora.json",
+    "source": "/scratch/sathvik/outputs/lora_epochs=10_disfluencytoken_weights_noiseaug_v5_corrected_mfa/pre_post_train_eval_metrics.json",
+    "size_bytes": 32009
+  },
+  {
+    "dest": "eval_metrics_plain_lora.json",
+    "source": "/scratch/sathvik/outputs/lora_v2_epochs=10/pre_post_train_eval_metrics.json",
+    "size_bytes": 31482
+  },
+  {
+    "dest": "eval_metrics_synthetic_data_lora_best.json",
+    "source": "/scratch/sathvik/outputs/qwen2_audio_lora_curriculum_synth_to_original_v6/pre_post_train_eval_metrics.json",
+    "size_bytes": 82448
+  },
+  {
+    "dest": "eval_metrics_token_weighted_augmented_lora.json",
+    "source": "/scratch/sathvik/outputs/lora_epochs=10_disfluencytoken_weights_noiseaug_v4/pre_post_train_eval_metrics.json",
+    "size_bytes": 31453
+  },
+  {
+    "dest": "eval_metrics_whisper_large_baseline_test.json",
+    "source": "/scratch/sathvik/outputs/baselines/whisper-large/baseline_eval/whisper_large/validation_metrics.json",
+    "size_bytes": 518
+  },
+  {
+    "dest": "eval_metrics_whisper_large_baseline_train.json",
+    "source": "/scratch/sathvik/outputs/baselines/whisper-large/baseline_eval/whisper_large/train_metrics.json",
+    "size_bytes": 514
+  },
+  {
+    "dest": "predictions_synthetic_data_lora_best_test.jsonl",
+    "source": "/scratch/sathvik/outputs/qwen2_audio_lora_curriculum_synth_to_original_v6/after_train_test_predictions.jsonl",
+    "size_bytes": 93576
+  },
+  {
+    "dest": "predictions_synthetic_data_lora_best_train.jsonl",
+    "source": "/scratch/sathvik/outputs/qwen2_audio_lora_curriculum_synth_to_original_v6/after_train_original_train_predictions.jsonl",
+    "size_bytes": 426783
+  }
+]

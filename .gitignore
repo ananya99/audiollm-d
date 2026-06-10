@@ -1,0 +1,27 @@
+# Secrets
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+
+# Testing
+.pytest_cache/
+
+# Notebooks
+.ipynb_checkpoints/
+
+# Data
+data/
+ADReSS-IS2020-data/
+preprocessed_data/
+processed_data/
+
+# OS
+.DS_Store
+
+# Outputs
+outputs/
+reports/

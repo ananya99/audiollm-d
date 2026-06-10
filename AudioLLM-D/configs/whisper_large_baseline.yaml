@@ -1,0 +1,39 @@
+model_name_or_path: openai/whisper-large
+output_dir: /scratch/sathvik/outputs/baselines/whisper-large
+
+data:
+  train_manifest: /scratch/merged_data_80_20/train/manifest.jsonl
+  validation_manifest: /scratch/merged_data_80_20/test/manifest.jsonl
+  audio_column: audio_path
+  text_column: text
+  sampling_rate: 16000
+
+special_tokens:
+  - "[short-pause]"
+  - "[medium-pause]"
+  - "[long-pause]"
+  - "[unclear-speech]"
+  - "[laughter]"
+  - "[non-verbal]"
+  - "[uh]"
+  - "[um]"
+disfluency_tokens:
+  - "[short-pause]"
+  - "[medium-pause]"
+  - "[long-pause]"
+  - "[unclear-speech]"
+  - "[laughter]"
+  - "[non-verbal]"
+  - "[uh]"
+  - "[um]"
+
+seed: 42
+report_to: none
+
+wandb:
+  project: audiollm-d-baselines
+  entity: lord-of-the-strings
+  name: whisper-large-baseline
+  tags:
+    - baseline
+    - whisper-large

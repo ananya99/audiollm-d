@@ -1,0 +1,22 @@
+{
+  "description": "Held-out test metrics from the final report (Table tab:main). Train metrics included where reported.",
+  "models": [
+    {"group": "baseline", "name": "Whisper-large-v3", "test_wer": 0.5141},
+    {"group": "baseline", "name": "CrisperWhisper", "test_wer": 0.4665},
+    {"group": "baseline", "name": "Qwen2-Audio (zero-shot)", "test_wer": 0.5396, "test_f1": 0.0331, "test_oa_f1": 0.0120},
+    {"group": "baseline", "name": "Qwen2-Audio (few-shot)", "test_wer": 0.6634, "test_f1": 0.0289, "test_oa_f1": 0.0100},
+    {"group": "progression", "name": "LLM-only LoRA", "test_wer": 0.4649, "test_f1": 0.4750, "test_oa_f1": 0.3063, "train_f1": 0.8748},
+    {"group": "progression", "name": "LLM LoRA + projector", "test_wer": 0.4902, "test_f1": 0.5196, "test_oa_f1": 0.3318, "train_f1": 0.9384},
+    {"group": "progression", "name": "Plain LoRA", "test_wer": 0.3692, "test_f1": 0.5097, "test_oa_f1": 0.3754, "train_f1": 0.9895},
+    {"group": "progression", "name": "CTC + diff. learning rates", "test_wer": 0.4710, "test_f1": 0.4959, "test_oa_f1": 0.3193, "train_f1": 0.9088},
+    {"group": "progression", "name": "Data aug. + weighted loss", "test_wer": 0.3803, "test_f1": 0.5523, "test_oa_f1": 0.3921, "train_f1": 0.9406},
+    {"group": "progression", "name": "MFA classifier", "test_wer": 0.3653, "test_f1": 0.5133, "test_oa_f1": 0.3513, "train_f1": 0.9396},
+    {"group": "progression", "name": "Synthetic + CrisperWhisper", "test_wer": 0.3566, "test_f1": 0.5721, "test_oa_f1": 0.3989, "train_f1": 0.9251, "best_f1": true},
+    {"group": "progression", "name": "Synthetic + Crisper + focal", "test_wer": 0.3619, "test_f1": 0.5531, "test_oa_f1": 0.3956, "train_f1": 0.9473},
+    {"group": "progression", "name": "Synthetic + base + focal", "test_wer": 0.3340, "test_f1": 0.5717, "test_oa_f1": 0.4216, "train_f1": 0.9403, "best_wer": true, "best_oa_f1": true}
+  ],
+  "per_token_oa_f1_best": {
+    "ref_counts_test": {"[uh]": 164, "[um]": 79, "[short-pause]": 105, "[medium-pause]": 53, "[long-pause]": 96, "[unclear-speech]": 132, "[laughter]": 40, "[non-verbal]": 24},
+    "synthetic_base_focal": {"[uh]": 0.64, "[um]": 0.73, "[short-pause]": 0.21, "[medium-pause]": 0.16, "[long-pause]": 0.34, "[unclear-speech]": 0.23, "[laughter]": 0.15, "[non-verbal]": 0.38}
+  }
+}

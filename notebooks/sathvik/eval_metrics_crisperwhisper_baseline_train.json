@@ -1,0 +1,78 @@
+{
+  "config": "/scratch/sathvik/open-project-m2-lordofthestrings/AudioLLM-D/configs/crisper_whisper_baseline.yaml",
+  "split": "train",
+  "manifest": "/scratch/merged_data_80_20/train/manifest.jsonl",
+  "model": "nyrahealth/CrisperWhisper",
+  "language": "en",
+  "num_samples": 658,
+  "wer": 0.4221955336276292,
+  "uh_um_metrics": {
+    "bag_of_tokens": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "pred_total": 0,
+      "ref_total": 1537,
+      "per_token": {
+        "uh": {
+          "tp": 0,
+          "pred_total": 0,
+          "ref_total": 1127,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "um": {
+          "tp": 0,
+          "pred_total": 0,
+          "ref_total": 410,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    "order_preserved": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "pred_total": 0,
+      "ref_total": 1537,
+      "per_token": {
+        "uh": {
+          "tp": 0,
+          "pred_total": 0,
+          "ref_total": 1127,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "um": {
+          "tp": 0,
+          "pred_total": 0,
+          "ref_total": 410,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    }
+  },
+  "normalization_notes": {
+    "mapped_to_words": {
+      "[uh]": "uh",
+      "[um]": "um"
+    },
+    "stripped_special_tokens_except_fillers": [
+      "[short-pause]",
+      "[medium-pause]",
+      "[long-pause]",
+      "[unclear-speech]",
+      "[laughter]",
+      "[non-verbal]"
+    ],
+    "uh_um_metrics_canonicalization": "word-boundary uh/um and [uh]/[um] are mapped to [uh]/[um]"
+  }
+}

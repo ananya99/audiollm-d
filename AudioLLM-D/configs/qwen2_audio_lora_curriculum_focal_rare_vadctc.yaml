@@ -1,0 +1,150 @@
+# v5 VAD-CTC on the winning base recipe (qwen2-audio-curriculum-focal-rare).
+# Starts from qwen2_audio_lora_curriculum_focal_rare.yaml (the BEST run on record:
+#   WER 0.334 / count-F1 0.572 / Edit-F1 0.422 — stock encoder, NO CrisperWhisper)
+# and adds EXACTLY ONE thing: an auxiliary CTC head supervised by acoustically-grounded
+# silence labels (energy-VAD, binary speech/pause), α=0.3.
+#
+# Label scheme: 3-class {speech, pause, long-pause}. The Stage-1 GATE found the CHAT short/medium/
+# long pause *categories* don't track acoustic silence (MFA-matched medians scrambled: 1.34/2.07/
+# 0.56s) — but that was an MFA-timestamp artifact. By the VAD's OWN measured durations, long pauses
+# ARE cleanly separable, and an acoustic noise audit (76 real clips) showed speech−silence gap
+# median 75 dB / min 19 dB, 0% below the 12 dB unreliable line → energy VAD is reliable on these
+# (clean) originals. So we keep a long-pause class = VAD silence ≥ 1.5s (acoustic, NOT MFA) to
+# preserve the clinically-important long pauses (1–5s, tail to 16s) that a binary collapse discards.
+# Corpus frame mix: speech 75.3% / pause 16.7% / long-pause 8.0% (675 long-pause segments).
+# Labels at /scratch/nathan/lora_run/v5_ctc_labels_3class (1276 clips: 450 synth + 658 train + 168 test).
+# This is the FIRST clean test of the CTC hypothesis: v4 used transcript-echo labels (useless);
+# these are read off the waveform. The head lands in the "other" optimizer group → base LR 8e-5;
+# watch `ctc_loss` in train.log (should fall from ~1.1 toward <0.8) — if it stalls, rerun hotter.
+# (Binary {speech,pause} labels also built at v5_ctc_labels_binary if we want to A/B later.)
+
+model_name_or_path: Qwen/Qwen2-Audio-7B-Instruct
+# audio_encoder_init_model: (removed - stock Qwen2-Audio encoder; CrisperWhisper HURT, see tracker ⊗)
+output_dir: /scratch/nathan/lora_run/outputs/qwen2-audio-curriculum-focal-rare-vadctc
+
+data:
+  train_manifest: /scratch/sathvik/synthetic_disfluency_1h_unique_v2/manifest.jsonl
+  curriculum_original_manifest: /scratch/merged_data_80_20/train/manifest.jsonl
+  curriculum_synthetic_only_epochs: 10
+  curriculum_ramp_epochs: 1
+  curriculum_final_original_ratio: 1.0
+  validation_manifest: /scratch/merged_data_80_20/test/manifest.jsonl
+  audio_column: audio_path
+  text_column: text
+  sampling_rate: 16000
+  noise_augmentation_prob: 0.35
+  augmentation_types:
+    - white_noise
+    - babble
+    - reverb
+    - speed
+    - codec
+  noise_snr_db_min: 12.0
+  noise_snr_db_max: 30.0
+  babble_snr_db_min: 10.0
+  babble_snr_db_max: 25.0
+  babble_num_sources: 4
+  reverb_rt60_ms_min: 200.0
+  reverb_rt60_ms_max: 800.0
+  speed_min: 0.85
+  speed_max: 1.15
+  codec_resample_rate: 8000
+
+special_tokens:
+  - "[short-pause]"
+  - "[medium-pause]"
+  - "[long-pause]"
+  - "[unclear-speech]"
+  - "[laughter]"
+  - "[non-verbal]"
+  - "[uh]"
+  - "[um]"
+disfluency_tokens:
+  - "[short-pause]"
+  - "[medium-pause]"
+  - "[long-pause]"
+  - "[unclear-speech]"
+  - "[laughter]"
+  - "[non-verbal]"
+  - "[uh]"
+  - "[um]"
+
+# v3.5 focal: gamma=2 restricted to the 4 rare bracket tokens (unchanged from the winning run).
+focal_gamma: 2.0
+focal_tokens:
+  - "[long-pause]"
+  - "[medium-pause]"
+  - "[laughter]"
+  - "[non-verbal]"
+
+# --- the ONLY addition vs the winning config: auxiliary VAD-CTC head (3-class) ---
+ctc:
+  enabled: true
+  labels_dir: /scratch/nathan/lora_run/v5_ctc_labels_3class
+  alpha: 0.3
+  classes:
+    - speech
+    - pause
+    - long-pause
+
+lora:
+  r: 16
+  alpha: 32
+  dropout: 0.1
+  enable_audio_lora: true
+  enable_llm_lora: true
+  train_multi_modal_projector: true
+  audio_encoder_top_half_only: false
+  use_dora: false
+  target_modules:
+    - q_proj
+    - k_proj
+    - v_proj
+    - out_proj
+    - o_proj
+    - gate_proj
+    - up_proj
+    - down_proj
+  modules_to_save:
+    - embed_tokens
+    - lm_head
+    - multi_modal_projector
+
+per_device_train_batch_size: 1
+per_device_eval_batch_size: 1
+gradient_accumulation_steps: 8
+learning_rate: 0.00008
+audio_encoder_learning_rate: 0.0002
+llm_learning_rate: 0.00008
+num_train_epochs: 20
+warmup_ratio: 0.03
+weight_decay: 0.01
+logging_steps: 10
+eval_steps: 200
+save_steps: 200
+save_total_limit: 2
+bf16: true
+fp16: false
+gradient_checkpointing: true
+use_4bit: false
+seed: 42
+report_to: wandb
+
+wandb:
+  entity: lord-of-the-strings
+  project: audiollm-d
+  name: qwen2-audio-curriculum-focal-rare-vadctc
+  tags:
+    - lora
+    - synthetic
+    - curriculum
+    - focal-rare-only
+    - vad-ctc
+    - v5
+  log_model: false
+
+run_pre_post_train_eval: true
+eval_generation_batch_size: 4
+eval_generation_do_sample: false
+eval_generation_temperature: 1.0
+run_lora_init_sanity_check: false

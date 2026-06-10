@@ -1,0 +1,89 @@
+{
+  "num_samples": 168,
+  "wer": 0.6633878200491827,
+  "disfluency_metrics": {
+    "num_samples": 168,
+    "disfluency_token_precision": 0.0436046511627907,
+    "disfluency_token_recall": 0.021645021645021644,
+    "disfluency_token_f1": 0.028929604628736744,
+    "disfluency_token_exact_set_accuracy": 0.05952380952380952,
+    "any_disfluency_token_accuracy": 0.17261904761904762,
+    "disfluency_token_hallucination_rate": 0.9563953488372093,
+    "disfluency_token_miss_rate": 0.9783549783549783,
+    "disfluency_token_tp": 15,
+    "disfluency_token_pred_total": 344,
+    "disfluency_token_ref_total": 693,
+    "per_token_stats": {
+      "[uh]": {
+        "tp": 1,
+        "pred_total": 1,
+        "ref_total": 164,
+        "precision": 1.0,
+        "recall": 0.006097560975609756,
+        "f1": 0.012121212121212121
+      },
+      "[um]": {
+        "tp": 3,
+        "pred_total": 193,
+        "ref_total": 79,
+        "precision": 0.015544041450777202,
+        "recall": 0.0379746835443038,
+        "f1": 0.022058823529411766
+      },
+      "[short-pause]": {
+        "tp": 5,
+        "pred_total": 66,
+        "ref_total": 105,
+        "precision": 0.07575757575757576,
+        "recall": 0.047619047619047616,
+        "f1": 0.05847953216374269
+      },
+      "[medium-pause]": {
+        "tp": 0,
+        "pred_total": 3,
+        "ref_total": 53,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "[long-pause]": {
+        "tp": 1,
+        "pred_total": 49,
+        "ref_total": 96,
+        "precision": 0.02040816326530612,
+        "recall": 0.010416666666666666,
+        "f1": 0.01379310344827586
+      },
+      "[unclear-speech]": {
+        "tp": 3,
+        "pred_total": 11,
+        "ref_total": 132,
+        "precision": 0.2727272727272727,
+        "recall": 0.022727272727272728,
+        "f1": 0.04195804195804196
+      },
+      "[laughter]": {
+        "tp": 2,
+        "pred_total": 18,
+        "ref_total": 40,
+        "precision": 0.1111111111111111,
+        "recall": 0.05,
+        "f1": 0.06896551724137932
+      },
+      "[non-verbal]": {
+        "tp": 0,
+        "pred_total": 3,
+        "ref_total": 24,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      }
+    },
+    "disfluency_token_order_tp": 5,
+    "disfluency_token_order_pred_total": 340,
+    "disfluency_token_order_ref_total": 646,
+    "disfluency_token_order_precision": 0.014705882352941176,
+    "disfluency_token_order_recall": 0.007739938080495356,
+    "disfluency_token_order_f1": 0.010141987829614604
+  }
+}
